@@ -10,7 +10,39 @@
 </head>
 <body>
     <header class="header">
-        <h1>Logo</h1>
+        <div class="header__wrapper wrapper">
+            <h1>Logo</h1>
+            <div id="humburger-btn" class="humburger__btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="humburger-menu" class="humburger__menu">
+                <!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+                <div id="humburger-bg">
+                    <ul>
+                        <li><a href="#">Top</a></li>  
+                        <li><a href="#">About</a></li>  
+                        <li><a href="#">Service</a></li>  
+                        <li><a href="#">Contact</a></li>  
+                    </ul>
+                </div>
+            </nav>        
+        </div>
     </header>
+    <main>
+        <style>
+            main {
+                background-color: aquamarine;
+                height:120vh;
+            }
+        </style>
+    </main>
+    <footer class="footer">
+        <div class="wrapper">
+            <p class="footer__copyright">Copyright 2023 MasayaKemmochi All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="./assets/js/index.js"></script>
 </body>
 </html>
