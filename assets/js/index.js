@@ -10,7 +10,10 @@ window.onload = function(){
         headerHamburgerBtn.classList.toggle('active');
 
         // ハンバーガーメニューの表示を切り替え
-        document.getElementById('humburger-menu').classList.toggle('panelactive');
+        document.getElementById('humburger-menu').classList.toggle('active');
+
+        // ハンバーガーカバーの表示を切り替え
+        document.getElementById('humburger-cover').classList.toggle('active');
 
         // スクロール固定を切り替え
         document.body.classList.toggle('noScroll')
