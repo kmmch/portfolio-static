@@ -25,11 +25,19 @@ window.onload = () => {
 
 (function() {
 
+    // 固定化ヘッダー
     const fixedHeader = document.getElementById('header--fixed');
+
+    // ハンバーガーボタン
     const humburgerBtn = document.getElementById('humburger-btn');
-    
+
+    // メインビジュアル
+    const mainvisual = document.getElementById('mainvisual');
+    // メインビジュアルの高さ
+    const mainvisualHeight = mainvisual.clientHeight;
+
+    // 画面位置（Y軸方向）が変化したかをチェックする関数
     const isUp = (function() {
-        
         const scrollElement = document.scrollingElement;
         let flag, prePoint, scrollPoint;
         
@@ -41,13 +49,15 @@ window.onload = () => {
             return flag;
     
         }
-    
     }());
 
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            
+
+    // 固定要素を表示する関数
+    const showFixedElements = () => {
+
+        // 画面位置（Y軸方向）がメインビジュアルより下かどうかを判定する
+        if (window.pageYOffset > (mainvisualHeight*0.8)) {
+                
             if (isUp()) {
                 fixedHeader.classList.remove('is-show');
                 humburgerBtn.classList.remove('is-show');
@@ -55,10 +65,19 @@ window.onload = () => {
                 fixedHeader.classList.add('is-show');
                 humburgerBtn.classList.add('is-show');
             }
-
+    
         } else {
             fixedHeader.classList.remove('is-show');
             humburgerBtn.classList.remove('is-show');
         }
-    })
+    }
+    
+    
+    // スクロールイベント発生時に処理する内容
+    window.addEventListener('scroll', () => {
+
+        showFixedElements();
+
+    });
+    
 }());
