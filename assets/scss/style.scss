@@ -39,7 +39,7 @@
     }
 
     &__description {
-        @include rem(28);
+        @include rem(24);
         font-weight: bold;
     }
 
@@ -345,6 +345,30 @@ article {
             }
         }
     }
+    @media screen and (max-width: 767px) {
+        #about {
+            .about {
+                &__contents {
+                    display: block;
+                }
+
+                &__img {
+                    width: 100%;
+                    max-width: none;
+                    margin-right: 0;
+                }
+
+                &__txt {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                &__link {
+                    text-align: center;
+                }
+            }
+        }
+    }
 
     #service {
         .service {
@@ -391,6 +415,27 @@ article {
             }
         }
     }
+    @media screen and (max-width: 767px) {
+        #service {
+            .service {
+                &__contents{
+                    display: block;
+                    margin: 10% 0;
+
+                    & li {
+                        width: 100%;
+                        max-width: none;
+                        max-height: none;
+                        margin-bottom: 8%;
+
+                        &:nth-child(2) {
+                            margin: 0 0 8% 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     #work {
         .work {
@@ -420,6 +465,27 @@ article {
             &__description {
                 &:hover {
                     text-decoration: underline;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 767px) {
+        #work {
+            .work {
+                &__contents {
+                    margin: 10% 0;
+                    display: block;
+
+                    & li {
+                        width: 100%;
+                        max-width: none;
+                        max-height: none;
+                        margin-bottom: 8%;
+
+                        &:nth-child(2) {
+                            margin: 0 0 8% 0;
+                        }
+                    }
                 }
             }
         }
@@ -455,7 +521,20 @@ article {
             width: 100%;
         }
     }
-
+}
+@media screen and (max-width: 767px) {
+    .modal {
+        &__content {
+            display: block;
+        }    
+        &__txt {
+            width: 100%; 
+            margin-bottom: 75px;
+        }
+        &__img {
+            width: 100%;
+        }
+    }
 }
 
 .modaal {
