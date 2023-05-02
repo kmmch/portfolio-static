@@ -4,6 +4,9 @@
 
 
 /*========= サイト共通 ===============*/
+h1, h2, h3, h4, h5, h6, p, a, span {
+    font-family: $font-main;
+}
 .noScroll {
     overflow: hidden;
 }
@@ -21,6 +24,7 @@
         position: relative;
         z-index: -1;
         font-weight: bold;
+        font-family: $font-en;
         @include rem(130);
         letter-spacing: 0.1em;
         padding: 0 0 10px 0;
@@ -35,18 +39,19 @@
             font-weight: normal;
 
             &.en {
-                left: 3em;
+                font-family: $font-en;
+                left: 2.2em;
                 top: 1.1em;
                 @include rem(40);
                 @include tablet {
                     @include rem(32);
-                    left: 2.3em;
+                    left: 1.6em;
                     top: 1.35em;
                 }
             }
             &.ja {
-                top: 6em;
-                left: 8em;
+                top: 6.8em;
+                left: 5.5em;
                 @include rem(16);
                 @include tablet {
                     @include rem(16);
@@ -133,8 +138,8 @@
     &__ttl {
         @include rem(42);
         text-align: start;
-        font-family: $font-yugothic;
         font-weight: bold;
+        font-family: $font-en;
     }
 }
 
@@ -178,7 +183,7 @@
             border-radius: 2px;
             background-color: $color-white;
             @include tablet {
-                background-color: $color-gray;
+                background-color: $color-black;
                 height:4px;
             }
     
@@ -201,6 +206,9 @@
         &.active {
             border-radius: 50% 0 0 50%;
             right: 299px;
+            @include tablet {
+                right: 0px;
+            }
 
             & span {
                 &:nth-of-type(1) {
@@ -426,13 +434,13 @@ article {
 
             & span {
                 &.en {
-                    left: 2.7em;
+                    left: 2em;
                     @include tablet {
-                        left: 2em;
+                        left: 1.55em;
                     }
                 }
                 &.ja {
-                    left: 7em;
+                    left: 5em;
                     @include tablet {
                         left: 0em;
                     }
@@ -521,13 +529,13 @@ article {
             }
             & span {
                 &.en {
-                    left: 3.5em;
+                    left: 2.5em;
                     @include tablet {
-                        left: 2.5em;
+                        left: 1.9em;
                     }
                 }
                 &.ja {
-                    left: 9em;
+                    left: 6.3em;
                     @include tablet {
                         left: 0em;
                     }
@@ -662,20 +670,20 @@ article {
 
         &:after, 
         &:before {
-            background: $color-gray;
+            background: $color-black;
         }
 
         &:focus {
             &:after,
             &:before {
-                background: $color-gray;
+                background: $color-black;
             }
         }
 
         &:hover {
             &:after,
             &:before {
-                background: $color-gray;
+                background: $color-black;
             }
         }
     }
@@ -707,6 +715,7 @@ aside {
     }
 
     & .copyright {
+        font-family: $font-en;
         color:$color-white;
         background: $color-black;
         text-align: center;

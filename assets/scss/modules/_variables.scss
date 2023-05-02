@@ -5,11 +5,8 @@ $color-gray: #999;
 
 
 /*========= フォント ===============*/
-//-->ヒラギノver.
-$font-hiragino: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-//-->游ゴシックver.
-$font-yugothic:"游ゴシック Medium","Yu Gothic Medium","游ゴシック体",YuGothic,sans-serif;
-
+$font-main: 'Noto Sans JP', sans-serif;
+$font-en: 'Oswald', sans-serif;
 
 /*========= ブレイクポイント ===============*/
 $tb: 768px; //タブレット
