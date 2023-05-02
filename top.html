@@ -17,7 +17,7 @@
 
     <header id="header--fixed" class="header fixed">
         <div class="wrapper">
-            <h1 class="header__ttl">Masaya Kemmochi's Portfolio</h1>
+            <h1 class="header__ttl en">Masaya Kemmochi's <br class="is-sp">Portfolio</h1>
         </div>
         <div id="humburger-btn" class="humburger__btn">
             <span></span>
@@ -26,11 +26,31 @@
         </div>
         <nav id="humburger-menu" class="humburger__menu">
             <div id="humburger-bg">
-                <ul>
-                    <li><a href="#">Top</a></li>  
-                    <li><a href="#">About</a></li>  
-                    <li><a href="#">Service</a></li>  
-                    <li><a href="#">Contact</a></li>  
+                <ul class="menu__list">
+                    <li class="menu__list--item">
+                        <a href="#">
+                            <span class="en">Home</span>
+                            <span class="ja">ホーム</span>
+                        </a>
+                    </li> 
+                    <li class="menu__list--item">
+                        <a href="#">
+                            <span class="en">About</span>
+                            <span class="ja">わたしについて</span>
+                        </a>
+                    </li> 
+                    <li class="menu__list--item">
+                        <a href="#">
+                            <span class="en">Service</span>
+                            <span class="ja">事業のご紹介</span>
+                        </a>
+                    </li>
+                    <li class="menu__list--item">
+                        <a href="#">
+                            <span class="en">Works</span>
+                            <span class="ja">過去の実績</span>
+                        </a>
+                    </li> 
                 </ul>
             </div>
         </nav>
@@ -40,11 +60,9 @@
 
 
     <section id="mainvisual" class="mainvisual">
-        <div class="mainvisual__wrapper">
+        <div class="wrapper">
             <h2 class="mainvisual__ttl">
-                ここにメインビジュアルのテキストが入ります。<br>
-                ここにメインビジュアルのテキストが入ります。<br>
-                ここにメインビジュアルのテキストが入ります。
+                <p class="TextTyping">日本語もいける？？？？</p>
             </h2>
         </div>
     </section>
@@ -61,7 +79,7 @@
 
             <section id="about" class="section">
                 <div class="wrapper">
-                    <div class="section__head">
+                    <div class="section__head ">
                         <h2 class="section__ttl">
                             A
                             <span class="en">bout</span>
@@ -76,10 +94,10 @@
                             <div class="about__txt">
                                 <h3>Masaya Kemmochi</h3>
                                 <p>
-                                    1997年2月生まれ、埼玉生まれ埼玉育ちのエンジニア。<br>
+                                    1997年2月生まれ、<br class="is-sp">埼玉生まれ埼玉育ちのエンジニア。<br>
                                     SIerでWeb開発やマネジメントに従事。<br>
-                                    個人でもプログラミングのメンターやサイト構築もおこなう。<br>
-                                    趣味は野球やバドミントンなどのスポーツ。千葉ロッテマリーンズの大ファン。
+                                    個人でもプログラミングのメンターやサイト構築もおこなう。<br><br>
+                                    趣味は野球とバドミントン。<br>千葉ロッテマリーンズの大ファン。
                                 </p>
                                 <div class="about__link">
                                     <a href="#" class="btn btn--solid">プロフィールを見てみる</a>
@@ -99,7 +117,7 @@
 
             <section id="service" class="section">
                 <div class="wrapper">
-                    <div class="section__head">
+                    <div class="section__head ">
                         <h2 class="section__ttl">
                             S
                             <span class="en">ervice</span>
@@ -145,7 +163,7 @@
 
             <section id="work" class="section">
                 <div class="wrapper">
-                    <div class="section__head">
+                    <div class="section__head ">
                         <h2 class="section__ttl">
                             W
                             <span class="en">orks</span>
@@ -283,5 +301,6 @@
     <script src="./assets/js/vendor/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/vendor/modaal.min.js"></script>
     <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/modules/animation.js"></script>
 </body>
 </html>

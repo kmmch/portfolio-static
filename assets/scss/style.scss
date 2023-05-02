@@ -1,11 +1,12 @@
 @use "modules/_variables" as *;
 @use "modules/_mixin" as *;
-
+@use "modules/_animation" as *;
 
 
 /*========= サイト共通 ===============*/
 h1, h2, h3, h4, h5, h6, p, a, span {
     font-family: $font-main;
+    color: $color-black;
 }
 .noScroll {
     overflow: hidden;
@@ -14,10 +15,19 @@ h1, h2, h3, h4, h5, h6, p, a, span {
 .wrapper {
     width: $wrapper-width;
     margin: 0 auto;
+    @include tablet {
+        width: 100%;
+    }
 }
 
 .section {
     margin: 20% 0 30% 0;
+
+    &__head {
+        @include tablet {
+            padding-left: 20px;
+        }
+    }
 
     &__ttl {
         text-align: start;
@@ -26,7 +36,7 @@ h1, h2, h3, h4, h5, h6, p, a, span {
         font-weight: bold;
         font-family: $font-en;
         @include rem(130);
-        letter-spacing: 0.1em;
+        letter-spacing: $en-letter-spacing;
         padding: 0 0 10px 0;
         line-height: 1;
         @include tablet {
@@ -39,14 +49,13 @@ h1, h2, h3, h4, h5, h6, p, a, span {
             font-weight: normal;
 
             &.en {
-                font-family: $font-en;
                 left: 2.2em;
                 top: 1.1em;
                 @include rem(40);
                 @include tablet {
                     @include rem(32);
-                    left: 1.6em;
-                    top: 1.35em;
+                    left: 52px;
+                    top: 47px;
                 }
             }
             &.ja {
@@ -55,8 +64,8 @@ h1, h2, h3, h4, h5, h6, p, a, span {
                 @include rem(16);
                 @include tablet {
                     @include rem(16);
-                    top: 5.2em;
-                    left: 0em;
+                    top: 83.2px;
+                    left: 0px;
                 }
             }
         }
@@ -98,34 +107,41 @@ h1, h2, h3, h4, h5, h6, p, a, span {
     }
 }
 
+.en {
+    font-family: $font-en;
+}
+
+.is {
+    &-sp {
+        display: none;
+        @include tablet {
+            display: block;
+        }
+    }
+}
+
 
 
 /*========= ヘッダー ===============*/
 .header {
     width:100%;
     color:$color-white;
-    text-align: center;
     position: fixed;
 
-    & .wrapper {
-        @include tablet {
-            display: none;
-        }
-    }
 
     &.fixed {
         top: -70px;  
-        line-height: 70px;
+        // height: 70px;
         font-size: 2em;
         box-sizing: border-box;
         transition: .5s; /* アニメーションタイミング */
 
         &.is-show {
             top: 0;
-            padding: 15px 0;
+            padding: 20px 0;
             background: $color-black;
             @include tablet {
-                padding: 0;
+                padding: 10px 15px;
             }
         }
     }
@@ -136,10 +152,13 @@ h1, h2, h3, h4, h5, h6, p, a, span {
     }
 
     &__ttl {
-        @include rem(42);
-        text-align: start;
+        @include rem(38);
+        letter-spacing: $en-letter-spacing;
         font-weight: bold;
-        font-family: $font-en;
+        color: $color-white;
+        @include tablet {
+            @include rem(22);
+        }
     }
 }
 
@@ -147,17 +166,15 @@ h1, h2, h3, h4, h5, h6, p, a, span {
 
 /*========= ハンバーガー ===============*/
 .humburger {
-
     /*========= ハンバーガーボタン ===============*/
     &__btn {
         position: fixed;
         z-index: 9999;/*ボタンを最前面に*/
-        top: 10px;
+        top: 1px;
         right: -80px;
         cursor: pointer;
         width: 80px;
         height: 80px;
-        background: $color-gray;
         border-radius: 50%;
         transition: all 0.6s;
         @include tablet {
@@ -179,33 +196,40 @@ h1, h2, h3, h4, h5, h6, p, a, span {
             transition: all .4s;
             position: absolute;
             right: 15px;
-            height: 2px;
+            height: 4px;
             border-radius: 2px;
             background-color: $color-white;
             @include tablet {
-                background-color: $color-black;
                 height:4px;
             }
     
             &:nth-of-type(1) {
-                top: calc(50% - 10px);
-                width: 60%;
+                top: calc(50% - 15px);
+                width: 70%;
+                @include tablet {
+                    top: calc(50% - 22px);
+                }
             }
     
             &:nth-of-type(2) {
                 top: 50%;
-                width: 37.5%;
-            }
+                width: 45%;
+                @include tablet {
+                    top: 43%;
+                }            }
     
             &:nth-of-type(3) {
-                top: calc(50% + 10px);
-                width: 25%;            
+                top: calc(50% + 15px);
+                width: 30%;    
+                @include tablet {
+                    top: calc(50% + 10px);
+                }        
             }
         }
     
         &.active {
             border-radius: 50% 0 0 50%;
-            right: 299px;
+            right: calc($humburgerMenu-width - 1px);
             @include tablet {
                 right: 0px;
             }
@@ -214,16 +238,20 @@ h1, h2, h3, h4, h5, h6, p, a, span {
                 &:nth-of-type(1) {
                     transform: translateY(6px) rotate(-45deg);
                     width: 60%;
+                    @include tablet {
+                        top: 25px;
+                    }
                 }
     
-            &:nth-of-type(2) {
+                &:nth-of-type(2) {
                     opacity: 0;
                 }
     
                 &:nth-of-type(3){
-                    top: 43px;
+                    top: 38px;
                     transform: translateY(-6px) rotate(45deg);
                     width: 60%;
+                    
                 }
             }
         }
@@ -239,13 +267,12 @@ h1, h2, h3, h4, h5, h6, p, a, span {
         /*ナビのスタート位置と形状*/
         top:0;
         right: -120%;
-        width: 300px;
+        width: $humburgerMenu-width;
         height: 100vh;/*ナビの高さ*/
-        background:$color-gray;
+        background:$color-black;
         /*動き*/
         transition: all 0.6s;
         @include tablet {
-            background: #fff;
             width: 100%;
         }
 
@@ -259,7 +286,7 @@ h1, h2, h3, h4, h5, h6, p, a, span {
                 /*ナビの数が増えた場合縦スクロール*/
                 position: fixed;
                 z-index: 9999; 
-                width: 300px;
+                width: $humburgerMenu-width;
                 height: 100vh;/*表示する高さ*/
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
@@ -269,10 +296,9 @@ h1, h2, h3, h4, h5, h6, p, a, span {
             }
 
             & ul {
-                left: 50%;
-
-                & li {
-                    text-align: center;
+                left: 30%;
+                @include tablet {
+                    left: 50%;
                 }
             }
         }
@@ -289,16 +315,13 @@ h1, h2, h3, h4, h5, h6, p, a, span {
             /*リストのレイアウト設定*/
             & li {
                 list-style: none;
-                text-align: start;
 
                 & a{
-                    color: $color-black;
+                    color: $color-white;
                     text-decoration: none;
-                    padding:10px;
                     display: block;
                     text-transform: uppercase;
-                    letter-spacing: 0.1em;
-                    font-weight: bold;
+                    letter-spacing: $en-letter-spacing;
                 }
             }
         }
@@ -321,6 +344,36 @@ h1, h2, h3, h4, h5, h6, p, a, span {
 }
 
 
+/*========= メニュー ===============*/
+.menu {
+    &__list {
+        &--item {
+            padding-bottom:40px;
+            @include tablet {
+                text-align: center;
+            }
+
+            &:last-child {
+                padding-bottom: 0px;
+            }
+
+            & span {
+                display: block;
+                color: $color-white;
+
+                &.en {
+                    margin-bottom:5px;
+                    font-weight: bold;
+                    @include rem(32);
+                }
+                &.ja {
+                    @include rem(16);
+                }
+            }
+        }
+    }
+}
+
 
 /*========= メインビジュアル ===============*/
 .mainvisual {
@@ -331,15 +384,10 @@ h1, h2, h3, h4, h5, h6, p, a, span {
     display: flex;
     align-items: center;
 
-    &__wrapper {
-        margin: auto;
-        width: 90%;
-        max-width: 1100px;
-        text-align: center;
-    }
     &__ttl {
         color: $color-black;
         @include rem(36);
+        text-align: center;
     }
 }
 
@@ -350,6 +398,9 @@ main {
     padding: 0% 5%;
     display: flex;
     justify-content: space-between;
+    @include tablet {
+        padding: 2%;
+    }
 
     &.isTop {
         & article {
@@ -436,7 +487,8 @@ article {
                 &.en {
                     left: 2em;
                     @include tablet {
-                        left: 1.55em;
+                        left: 48px;
+                        top: 46px;
                     }
                 }
                 &.ja {
@@ -716,9 +768,14 @@ aside {
 
     & .copyright {
         font-family: $font-en;
-        color:$color-white;
         background: $color-black;
         text-align: center;
         padding: 20px;
+
+        & p {
+            color: $color-white;
+        }
     }
 }
+
+

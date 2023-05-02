@@ -1,0 +1,47 @@
+/*========= タイピング風 ===============*/
+.TextTyping {
+    & span {
+        display: none;
+    }
+
+    /*文字列後ろの線の設定*/
+    &::after {
+        content: "|";
+        animation: typinganime .8s ease infinite;
+    }
+}
+
+@keyframes typinganime{
+	from{opacity:0}
+	to{opacity:1}
+}
+
+
+
+/*========= ふわっと現れる ===============*/
+/* fadeUp */
+
+.fadeUp{
+    animation-name:fadeUpAnime;
+    animation-duration:0.5s;
+    animation-fill-mode:forwards;
+    opacity:0;
+    }
+    
+    @keyframes fadeUpAnime{
+        from {
+            opacity: 0;
+            transform: translateY(100px);
+        }
+    
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    
+    /* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+    .fadeUpTrigger{
+        opacity: 0;
+    }
