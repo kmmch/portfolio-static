@@ -9,20 +9,12 @@
 }
 
 .wrapper {
-    width: 90%;
+    width: $wrapper-width;
     margin: 0 auto;
 }
 
 .section {
     margin: 20% 0 30% 0;
-
-    &__wrapper {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    &__head {
-    }
 
     &__ttl {
         text-align: start;
@@ -33,6 +25,9 @@
         letter-spacing: 0.1em;
         padding: 0 0 10px 0;
         line-height: 1;
+        @include tablet {
+            font-size: 5rem;
+        }
 
         & span {
             position: absolute;
@@ -41,12 +36,22 @@
             &.en {
                 left: 3em;
                 top: 1.1em;
-                font-size: 3vw;    
+                font-size: 3vw;
+                @include tablet {
+                    font-size: 2rem;
+                    left: 2.3em;
+                    top: 1.35em;
+                }
             }
             &.ja {
                 top: 6em;
                 left: 8em;
                 font-size: 1.2vw;
+                @include tablet {
+                    font-size: 1.0rem;
+                    top: 5.2em;
+                    left: 0em;
+                }
             }
         }
     }
@@ -64,44 +69,20 @@
         text-align: center;
     }
 }
-@media screen and (max-width: 767px) {
-    .section {
-        &__wrapper {
-            width: 95%;
-        }
-
-        &__ttl {
-            font-size: 5rem;
-
-            & span {
-                &.en {
-                    font-size: 2rem;
-                    left: 2.3em;
-                    top: 1.35em;
-                }
-                &.ja {
-                    font-size: 1.0rem;
-                    top: 5.2em;
-                    left: 0em;
-                }
-            }
-        }
-    }
-}
 
 .btn {
     display: inline-block;
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: $color-white;
+    border: 1px solid $color-black;
     padding: 10px 40px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    color: #000;
+    color: $color-black;
     text-decoration: none !important;
 
     &--solid {
-        box-shadow: 2px 2px 0 0 #000;
+        box-shadow: 2px 2px 0 0 $color-black;
         border-radius: 7px;
 
         &:hover {
@@ -112,13 +93,19 @@
 }
 
 
+
 /*========= ヘッダー ===============*/
 .header {
     width:100%;
-    color:#fff;
+    color:$color-white;
     text-align: center;
     position: fixed;
 
+    & .wrapper {
+        @include tablet {
+            display: none;
+        }
+    }
 
     &.fixed {
         top: -70px;  
@@ -130,7 +117,10 @@
         &.is-show {
             top: 0;
             padding: 15px 0;
-            background: #000;
+            background: $color-black;
+            @include tablet {
+                padding: 0;
+            }
         }
     }
 
@@ -146,13 +136,8 @@
         font-weight: bold;
     }
 }
-@media screen and (max-width: 767px) {
-    .header {
-        &__wrapper {
-            display: none;
-        }
-    }
-}
+
+
 
 /*========= ハンバーガー ===============*/
 .humburger {
@@ -166,12 +151,20 @@
         cursor: pointer;
         width: 80px;
         height: 80px;
-        background: #999;
+        background: $color-gray;
         border-radius: 50%;
         transition: all 0.6s;
+        @include tablet {
+            background: none;
+            top: 0;
+            z-index: 99999;
+        }
         
         &.is-show {
             right: 10%;
+            @include tablet {
+                right: 0;
+            }
         }
     
         /*×に変化*/	
@@ -182,7 +175,11 @@
             right: 15px;
             height: 2px;
             border-radius: 2px;
-            background-color: #fff;
+            background-color: $color-white;
+            @include tablet {
+                background-color: $color-gray;
+                height:4px;
+            }
     
             &:nth-of-type(1) {
                 top: calc(50% - 10px);
@@ -235,9 +232,13 @@
         right: -120%;
         width: 300px;
         height: 100vh;/*ナビの高さ*/
-        background:#999;
+        background:$color-gray;
         /*動き*/
         transition: all 0.6s;
+        @include tablet {
+            background: #fff;
+            width: 100%;
+        }
 
 
         /*アクティブクラスがついたら位置を0に*/
@@ -253,6 +254,17 @@
                 height: 100vh;/*表示する高さ*/
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
+                @include tablet {
+                    width: 100%;
+                }
+            }
+
+            & ul {
+                left: 50%;
+
+                & li {
+                    text-align: center;
+                }
             }
         }
 
@@ -271,7 +283,7 @@
                 text-align: start;
 
                 & a{
-                    color: #333;
+                    color: $color-black;
                     text-decoration: none;
                     padding:10px;
                     display: block;
@@ -298,43 +310,7 @@
         }
     }
 }
-@media screen and (max-width: 767px) {
-    .humburger {
-        &__btn {
-            background: none;
-            top: 0;
-            z-index: 99999;
 
-            &.is-show {
-                right: 0;
-            }
-
-            & span {
-                background-color: #999;
-                height:4px;
-            }
-        }
-
-        &__menu {
-            background: #fff;
-            width: 100%;
-
-            &.active {
-                & #humburger-bg {
-                    width: 100%;
-                }
-
-                & ul {
-                    left: 50%;
-
-                    & li {
-                        text-align: center;
-                    }
-                }
-            }
-        }
-    }
-}
 
 
 /*========= メインビジュアル ===============*/
@@ -353,7 +329,7 @@
         text-align: center;
     }
     &__ttl {
-        color: #111;
+        color: $color-black;
         @include rem(36);
     }
 }
@@ -377,10 +353,11 @@ main {
     }
 }
 
+
 article {
     width: 67%;
 
-    /*========= メインコンテンツ ===============*/
+    /*========= トップAbout ===============*/
     #about {
         & .section__ttl {
             margin-bottom: 0px;
@@ -390,12 +367,21 @@ article {
             &__contents {
                 display: flex;
                 justify-content: center;
+                @include tablet {
+                    display: block;
+                }
             }
             &__img {
                 max-width: 400px;
                 width: 45%;
                 margin-right: 30px;
                 padding: 75px 0 0 0;
+                @include tablet {
+                    width: 100%;
+                    max-width: none;
+                    margin-right: 0;
+                    padding-top:50px;
+                }
 
                 & img {
                     width: 100%;
@@ -405,6 +391,10 @@ article {
                 margin-left: 30px;
                 width: 45%;
                 padding: 50px 0 0 0;
+                @include tablet {
+                    width: 100%;
+                    margin: 0;
+                }
 
                 & h3 {
                     @include rem(32);
@@ -416,42 +406,35 @@ article {
                     line-height: 2;
                 }
             }
-        }
-    }
-    @media screen and (max-width: 767px) {
-        #about {
-            .about {
-                &__contents {
-                    display: block;
-                }
-
-                &__img {
-                    width: 100%;
-                    max-width: none;
-                    margin-right: 0;
-                    padding-top:50px;
-                }
-
-                &__txt {
-                    width: 100%;
-                    margin: 0;
-                }
-
-                &__link {
+            &__link {
+                @include tablet {
                     text-align: center;
                 }
             }
         }
     }
 
+
+    /*========= トップService ===============*/
     #service {
         & .section__ttl {
+            @include tablet {
+                padding-bottom: 0px;
+                margin-bottom: 35px;
+            }
+
             & span {
                 &.en {
                     left: 2.7em;
+                    @include tablet {
+                        left: 2em;
+                    }
                 }
                 &.ja {
                     left: 7em;
+                    @include tablet {
+                        left: 0em;
+                    }
                 }
             }
         }
@@ -459,11 +442,18 @@ article {
         .service {
             &__contents{
                 margin: 10% 0;
+                @include tablet {
+                    display: block;
+                    margin: 0 0 10% 0;
+                }
 
                 & li {
                     display: flex;
                     justify-content: center;
                     margin-bottom: 10%;
+                    @include tablet {
+                        display: block;
+                    }
 
                     &:nth-child(2n+1) {
                         flex-direction: row-reverse;
@@ -488,6 +478,11 @@ article {
             &__head {
                 width: 40%;
                 padding-top:40px;
+                @include tablet {
+                    width: 100%;
+                    margin-left: 0 !important;
+                    text-align: center;
+                }
 
                 & h3 {
                     @include rem(28);
@@ -501,6 +496,9 @@ article {
 
             &__body {
                 width: 50%;
+                @include tablet {
+                    width: 100%;
+                }
 
                 & figure {
                     & img {
@@ -510,65 +508,27 @@ article {
             }
         }
     }
-    @media screen and (max-width: 767px) {
-        #service {
-            .section {
-                &__ttl {
-                    padding-bottom: 0px;
-                    margin-bottom: 35px;
-                    & span {
-                        &.en {
-                            left: 2em;
-                        }
-                        &.ja {
-                            left: 0em;
-                        }
-                    }
-                }
-            }
-            .service {
-                &__contents{
-                    display: block;
-                    margin: 0 0 10% 0;
 
-                    & li {
-                        display: block;
 
-                        & .service {
-                            &__head {
-                                margin-left: 0 !important;
-                            }
-                        }
-                    }
-                }
-
-                &__head {
-                    width: 100%;
-
-                    & h3 {
-                        text-align: center;
-                    }
-
-                    & p {
-                        text-align: center;
-                    }
-                }
-
-                &__body {
-                    width: 100%;
-                }
-            }
-        }
-    }
-
+    /*========= トップWork ===============*/
     #work {
         & .section__ttl {
+            @include tablet {
+                padding-bottom: 0px;
+                margin-bottom: 35px;
+            }
             & span {
                 &.en {
                     left: 3.5em;
+                    @include tablet {
+                        left: 2.5em;
+                    }
                 }
                 &.ja {
                     left: 9em;
+                    @include tablet {
+                        left: 0em;
+                    }
                 }
             }
         }
@@ -578,20 +538,37 @@ article {
                 margin: 10% 0;
                 display: flex;
                 justify-content: center;
+                @include tablet {
+                    margin: 10% 0;
+                    display: block;
+                }
 
                 & li {
                     max-width: 370px;
                     width: 30%;
                     text-align: center;
+                    @include tablet {
+                        width: 100%;
+                        max-width: none;
+                        max-height: none;
+                        margin-bottom: 8%;
+                    }
                     
                     &:nth-child(2),
                     &:nth-child(3) {
                         position: relative;
                         z-index: -1;
+                        @include tablet {
+                            position: static;
+                            top: 0px;
+                        }
                     }
                     &:nth-child(2) {
                         margin: 0 5%;
                         top: 50px;
+                        @include tablet {
+                            margin: 0 0 8% 0;
+                        }
                     }
                     &:nth-child(3) {
                         top: 100px;
@@ -613,60 +590,29 @@ article {
             }
         }
     }
-    @media screen and (max-width: 767px) {
-        #work {
-            .section {
-                &__ttl {
-                    padding-bottom: 0px;
-                    margin-bottom: 35px;
-                    & span {
-                        &.en {
-                            left: 2.5em;
-                        }
-                        &.ja {
-                            left: 0em;
-                        }
-                    }
-                }
-            }
-            .work {
-                &__contents {
-                    margin: 10% 0;
-                    display: block;
-
-                    & li {
-                        width: 100%;
-                        max-width: none;
-                        max-height: none;
-                        margin-bottom: 8%;
-
-                        &:nth-child(2) {
-                            margin: 0 0 8% 0;
-                            position: static;
-                            top: 0px;
-                        }
-                        &:nth-child(3) {
-                            position: static;
-                            top: 0px;
-                        }
-
-                    }
-                }
-            }
-        }
-    }
 }
 
+
+
+/*========= モーダル(modaal.jsのカスタマイズ部分) ===============*/
 .modal {
     display: none;
 
     &__content {
         display: flex;
         justify-content: center;
+        @include tablet {
+            display: block;
+        }
     }
 
     &__txt {
         width: 48%; 
+        @include tablet {
+            width: 100%; 
+            margin-bottom: 75px;
+        }
+
         & .modal__description {
             &:nth-child(2) {
                 margin-bottom: 50px;
@@ -682,21 +628,11 @@ article {
 
     &__img {
         width: 48%;
-        & img {
+        @include tablet {
             width: 100%;
         }
-    }
-}
-@media screen and (max-width: 767px) {
-    .modal {
-        &__content {
-            display: block;
-        }    
-        &__txt {
-            width: 100%; 
-            margin-bottom: 75px;
-        }
-        &__img {
+
+        & img {
             width: 100%;
         }
     }
@@ -707,50 +643,47 @@ article {
         width: 90%;
         max-width:1200px;
     }
+
     &-content-container {
-        padding: 60px
+        padding: 60px;
+        @include tablet {
+            padding: 45px 30px;
+        }
     }
+
     &-close {
         position: absolute;
+        @include tablet {
+            right: 0px;
+            top: 0px;
+        }
 
         &:after, 
         &:before {
-            background: #ccc;
+            background: $color-gray;
         }
 
         &:focus {
             &:after,
             &:before {
-                background: #666;
+                background: $color-gray;
             }
         }
 
         &:hover {
             &:after,
             &:before {
-                background: #666;
+                background: $color-gray;
             }
         }
     }
 }
-@media screen and (max-width: 767px) {
-    .modaal {
-        &-content-container {
-            padding: 45px 30px;
-        }
 
-        &-close {
-            right: 0px;
-            top: 0px;
-        }
-    }
-}
 
 aside {
     width: 27%;
     padding: 10% 0;
-    border: 1px solid #000;
-    background-color: #9299cc;
+    border: 1px solid $color-black;
 }
 
 
@@ -772,8 +705,8 @@ aside {
     }
 
     & .copyright {
-        color:#fff;
-        background: #000;
+        color:$color-white;
+        background: $color-black;
         text-align: center;
         padding: 20px;
     }

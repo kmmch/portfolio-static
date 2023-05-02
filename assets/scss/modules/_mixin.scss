@@ -1,3 +1,7 @@
+@use "_variables" as *;
+
+
+
 /*========= タブレット向けスタイル ===============*/
 @mixin tablet {
     @media screen and (max-width: $tb) {
@@ -6,12 +10,14 @@
 }
 
 
+
 /*========= スマホ向けスタイル ===============*/
 @mixin mobile {
     @media screen and (max-width: $mb) {
         @content;
     }
 }
+
 
 
 /*========= フォントサイズ定義 ===============*/
