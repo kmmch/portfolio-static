@@ -17,10 +17,6 @@
 .section {
     margin: 20% 0 30% 0;
 
-    &:nth-last-child(1) {
-        margin: 20% 0 15% 0;
-    }
-
     &__wrapper {
         // background-color: #c08080;
         width: 80%;
@@ -28,27 +24,33 @@
     }
 
     &__head {
-        text-align: center;
+        // text-align: center;
     }
 
     &__ttl {
-        text-transform: uppercase;
-        margin-bottom: 20px;
+        text-align: start;
         position: relative;
-        font-weight: normal;
-        font-size: 5vw;
-        // letter-spacing: 0.1em;
-        // padding: 0 0 30px 0;
-        // line-height: 1;
+        z-index: -1;
+        font-weight: bold;
+        font-size: 10vw;
+        letter-spacing: 0.1em;
+        padding: 0 0 10px 0;
+        line-height: 1;
 
         & span {
-            display: block;
-        }
-        & .en {
+            position: absolute;
+            font-weight: normal;
 
-        }
-        & .ja {
-            font-size: 1.2vw;
+            &.en {
+                left: 3em;
+                top: 1.1em;
+                font-size: 3vw;    
+            }
+            &.ja {
+                top: 6em;
+                left: 8em;
+                font-size: 1.2vw;
+            }
         }
     }
 
@@ -70,6 +72,23 @@
     .section {
         &__wrapper {
             width: 95%;
+        }
+
+        &__ttl {
+            font-size: 5rem;
+
+            & span {
+                &.en {
+                    font-size: 2rem;
+                    left: 2.3em;
+                    top: 1.35em;
+                }
+                &.ja {
+                    font-size: 1.0rem;
+                    top: 5.2em;
+                    left: 0em;
+                }
+            }
         }
     }
 }
@@ -134,7 +153,13 @@
         // font-family: $font-hiragino;
     }
 }
-
+@media screen and (max-width: 767px) {
+    .header {
+        &__wrapper {
+            display: none;
+        }
+    }
+}
 
 /*========= ハンバーガー ===============*/
 .humburger {
@@ -198,7 +223,7 @@
                 }
     
                 &:nth-of-type(3){
-                    top: 45px;
+                    top: 43px;
                     transform: translateY(-6px) rotate(45deg);
                     width: 60%;
                 }
@@ -281,7 +306,43 @@
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .humburger {
+        &__btn {
+            background: none;
+            top: 0;
+            z-index: 99999;
 
+            &.is-show {
+                right: 0;
+            }
+
+            & span {
+                background-color: #999;
+                height:4px;
+            }
+        }
+
+        &__menu {
+            background: #fff;
+            width: 100%;
+
+            &.active {
+                & #humburger-bg {
+                    width: 100%;
+                }
+
+                & ul {
+                    left: 50%;
+
+                    & li {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 /*========= メインビジュアル ===============*/
@@ -334,11 +395,7 @@ article {
     /*========= メインコンテンツ ===============*/
     #about {
         & .section__ttl {
-            text-align: start;
             margin-bottom: 0px;
-        }
-        & .section__description {
-            text-align: start;
         }
 
         .about {
@@ -384,6 +441,7 @@ article {
                     width: 100%;
                     max-width: none;
                     margin-right: 0;
+                    padding-top:50px;
                 }
 
                 &__txt {
@@ -400,10 +458,14 @@ article {
 
     #service {
         & .section__ttl {
-            text-align: start;
-        }
-        & .section__description {
-            text-align: start;
+            & span {
+                &.en {
+                    left: 2.7em;
+                }
+                &.ja {
+                    left: 7em;
+                }
+            }
         }
 
         .service {
@@ -413,7 +475,7 @@ article {
                 & li {
                     display: flex;
                     justify-content: center;
-                    margin-bottom: 5%;
+                    margin-bottom: 10%;
 
                     &:nth-child(2n+1) {
                         flex-direction: row-reverse;
@@ -462,21 +524,44 @@ article {
     }
     @media screen and (max-width: 767px) {
         #service {
+            .section {
+                &__ttl {
+                    padding-bottom: 0px;
+                    margin-bottom: 35px;
+                    & span {
+                        &.en {
+                            left: 2em;
+                        }
+                        &.ja {
+                            left: 0em;
+                        }
+                    }
+                }
+            }
             .service {
                 &__contents{
                     display: block;
-                    margin: 10% 0;
+                    margin: 0 0 10% 0;
 
                     & li {
                         display: block;
+
+                        & .service {
+                            &__head {
+                                margin-left: 0 !important;
+                            }
+                        }
                     }
                 }
 
                 &__head {
-                    margin: 0 !important;
                     width: 100%;
 
                     & h3 {
+                        text-align: center;
+                    }
+
+                    & p {
                         text-align: center;
                     }
                 }
@@ -490,10 +575,14 @@ article {
 
     #work {
         & .section__ttl {
-            text-align: start;
-        }
-        & .section__description {
-            text-align: start;
+            & span {
+                &.en {
+                    left: 3.5em;
+                }
+                &.ja {
+                    left: 9em;
+                }
+            }
         }
 
         .work {
@@ -507,14 +596,14 @@ article {
                     width: 30%;
                     text-align: center;
                     
-                    &:nth-child(1) {
-                        position: relative;
-                        top: 100px;
-                    }
                     &:nth-child(2) {
                         margin: 0 5%;
                         position: relative;
                         top: 50px;
+                    }
+                    &:nth-child(3) {
+                        position: relative;
+                        top: 100px;
                     }
                 }
             }
@@ -535,6 +624,20 @@ article {
     }
     @media screen and (max-width: 767px) {
         #work {
+            .section {
+                &__ttl {
+                    padding-bottom: 0px;
+                    margin-bottom: 35px;
+                    & span {
+                        &.en {
+                            left: 2.5em;
+                        }
+                        &.ja {
+                            left: 0em;
+                        }
+                    }
+                }
+            }
             .work {
                 &__contents {
                     margin: 10% 0;
@@ -546,16 +649,16 @@ article {
                         max-height: none;
                         margin-bottom: 8%;
 
-                        &:nth-child(1) {
-                            position: static;
-                            top: 0px;
-                        }
-
                         &:nth-child(2) {
                             margin: 0 0 8% 0;
                             position: static;
                             top: 0px;
                         }
+                        &:nth-child(3) {
+                            position: static;
+                            top: 0px;
+                        }
+
                     }
                 }
             }
